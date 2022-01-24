@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
+import cors from "cors";
 
 import usersRoute from "./routes/users.route";
 
@@ -17,6 +18,7 @@ mongoose.connect(
   }
 );
 
+app.use(cors());
 app.use(bodyParser.json());
 
 app.use("/api/users", usersRoute);

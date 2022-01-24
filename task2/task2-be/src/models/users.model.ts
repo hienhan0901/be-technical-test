@@ -1,8 +1,8 @@
 import mongoose, { Document } from "mongoose";
 
 export interface IUser extends Document {
-  username: String;
-  email: String;
+  username: string;
+  email: string;
   birthday: Date;
 }
 
