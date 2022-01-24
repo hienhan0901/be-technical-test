@@ -1,21 +1,11 @@
 import express, { Request, Response } from "express";
+import { queryUsers, updateUsers } from "../controllers/users.controller";
+import { authMiddleware } from "../middlewares/auth.mdw";
 
-const router: any = express.Router();
+const router = express.Router();
 
 router
-  .get("/", (req: Request, res: Response) => {
-    try {
-      res.status(200).json({});
-    } catch (e) {
-      res.status(500).json(e);
-    }
-  })
-  .put("/", (req: Request, res: Response) => {
-    try {
-      res.status(200).json({});
-    } catch (e) {
-      res.status(500).json(e);
-    }
-  });
+  .get("/", authMiddleware, queryUsers)
+  .post("/", authMiddleware, updateUsers);
 
 export default router;
